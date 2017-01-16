@@ -5,6 +5,9 @@
  */
 package ssbrs.ulaz;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.*;
 /**
@@ -26,6 +29,8 @@ public class IzdajPotvrdu extends javax.swing.JFrame {
          this.nazivUlaznogCvora=nazivUlaznogCvora;
         initComponents();
         jTextField1.setText("Naziv ulaznog čvora : "+nazivUlaznogCvora);
+        jTextField2.setText("Datum : "+ LocalDate.now().format(DateTimeFormatter.ofPattern("dd.MM.yyyy")));
+        jTextField3.setText("Vrijeme : "+ LocalTime.now().format(DateTimeFormatter.ofPattern("hh:mm")));
     }
     
     /**
