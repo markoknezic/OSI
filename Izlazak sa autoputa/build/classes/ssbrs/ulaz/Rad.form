@@ -39,6 +39,9 @@
           <Dimension value="[800, 600]"/>
         </Property>
       </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="p"/>
+      </AccessibilityProperties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
         <Property name="useNullLayout" type="boolean" value="true"/>
@@ -50,9 +53,9 @@
               <Color blue="99" green="99" red="0" type="rgb"/>
             </Property>
           </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_allCodePost" type="java.lang.String" value="String filePath = new File(&quot;&quot;).getAbsolutePath();&#xa;filePath=filePath+&quot;\\src\\UlazniCvorovi.txt&quot;;&#xa;System.out.println(filePath);&#xa; File file=new File(filePath);&#xa;         BufferedReader br;&#xa;          List&lt;String&gt; ulazniCvor = new ArrayList&lt;String&gt;();&#xa;        try{&#xa;            br = new BufferedReader(new InputStreamReader(new FileInputStream(file), &quot;UTF8&quot;));&#xa;            String line = br.readLine();&#xa;       &#xa;        &#xa;        String[] pom;&#xa;        while (line != null) {&#xa;            pom=line.split(&quot;;&quot;);&#xa;            ulazniCvor.add(pom[0]);&#xa;            choice1.add(pom[0]);&#xa;            line=br.readLine();&#xa;        }&#xa;        br.close();&#xa;}&#xa;        catch (FileNotFoundException ex) {&#xa;            Logger.getLogger(Rad.class.getName()).log(Level.SEVERE, null, ex);&#xa;        } catch (UnsupportedEncodingException ex) {&#xa;            Logger.getLogger(Rad.class.getName()).log(Level.SEVERE, null, ex);&#xa;        } catch (IOException ex) {&#xa;            Logger.getLogger(Rad.class.getName()).log(Level.SEVERE, null, ex);&#xa;        }"/>
-          </AuxValues>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="jChoice"/>
+          </AccessibilityProperties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="198" y="290" width="450" height="-1"/>

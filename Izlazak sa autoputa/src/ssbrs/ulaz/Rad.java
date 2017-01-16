@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package ssbrs.ulaz;
+import java.awt.Panel;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -31,6 +32,33 @@ private MeniForm mf;
     public Rad(MeniForm mf) {
         this.mf=mf;
         initComponents();
+                          String filePath = new File("").getAbsolutePath();
+filePath=filePath+"\\src\\UlazniCvorovi.txt";
+System.out.println(filePath);
+ File file=new File(filePath);
+         BufferedReader br;
+          List<String> ulazniCvor = new ArrayList<String>();
+        try{
+            br = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF8"));
+            String line = br.readLine();
+       
+        
+        String[] pom;
+        while (line != null) {
+            pom=line.split(";");
+            ulazniCvor.add(pom[0]);
+            choice1.add(pom[0]);
+            line=br.readLine();
+        }
+        br.close();
+}
+        catch (FileNotFoundException ex) {
+            Logger.getLogger(Rad.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(Rad.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Rad.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -57,32 +85,7 @@ private MeniForm mf;
         choice1.setBackground(new java.awt.Color(0, 153, 153));
         jPanel2.add(choice1);
         choice1.setBounds(198, 290, 450, 20);
-        String filePath = new File("").getAbsolutePath();
-        filePath=filePath+"\\src\\UlazniCvorovi.txt";
-        System.out.println(filePath);
-        File file=new File(filePath);
-        BufferedReader br;
-        List<String> ulazniCvor = new ArrayList<String>();
-        try{
-            br = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF8"));
-            String line = br.readLine();
-
-            String[] pom;
-            while (line != null) {
-                pom=line.split(";");
-                ulazniCvor.add(pom[0]);
-                choice1.add(pom[0]);
-                line=br.readLine();
-            }
-            br.close();
-        }
-        catch (FileNotFoundException ex) {
-            Logger.getLogger(Rad.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (UnsupportedEncodingException ex) {
-            Logger.getLogger(Rad.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Rad.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        choice1.getAccessibleContext().setAccessibleName("jChoice");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -135,6 +138,8 @@ private MeniForm mf;
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        jPanel2.getAccessibleContext().setAccessibleName("p");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
