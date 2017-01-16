@@ -20,9 +20,12 @@ public class IzdajPotvrdu extends javax.swing.JFrame {
         initComponents();
     }
     private Rad r;
-     public IzdajPotvrdu(Rad r) {
+    private String nazivUlaznogCvora;
+     public IzdajPotvrdu(Rad r,String nazivUlaznogCvora) {
          this.r=r;
+         this.nazivUlaznogCvora=nazivUlaznogCvora;
         initComponents();
+        jTextField1.setText("Naziv ulaznog čvora : "+nazivUlaznogCvora);
     }
     
     /**
@@ -68,18 +71,21 @@ public class IzdajPotvrdu extends javax.swing.JFrame {
         jPanel1.add(jLabel3);
         jLabel3.setBounds(100, 130, 250, 30);
 
+        jTextField1.setEditable(false);
         jTextField1.setBackground(new java.awt.Color(0, 153, 153));
         jTextField1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(204, 204, 204));
         jPanel1.add(jTextField1);
         jTextField1.setBounds(100, 180, 600, 40);
 
+        jTextField2.setEditable(false);
         jTextField2.setBackground(new java.awt.Color(0, 153, 153));
         jTextField2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(204, 204, 204));
         jPanel1.add(jTextField2);
         jTextField2.setBounds(100, 230, 600, 40);
 
+        jTextField3.setEditable(false);
         jTextField3.setBackground(new java.awt.Color(0, 153, 153));
         jTextField3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jTextField3.setForeground(new java.awt.Color(204, 204, 204));
