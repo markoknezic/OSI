@@ -4,17 +4,6 @@
  * and open the template in the editor.
  */
 package ssbrs.ulaz;
-
-import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.control.DatePicker;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-import java.util.Calendar;
-import java.text.SimpleDateFormat;
-import java.util.GregorianCalendar;
-import javax.swing.JOptionPane;
-import java.lang.Exception;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -30,17 +19,15 @@ import java.util.logging.Logger;
  *
  * @author Knezic
  */
-public class Rad extends javax.swing.JFrame  {
+public class Rad extends javax.swing.JFrame {
 
     /**
      * Creates new form Rad
      */
     public Rad() {
         initComponents();
-        ShowTime();
-        ShowDate();
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -50,41 +37,21 @@ public class Rad extends javax.swing.JFrame  {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
         choice1 = new java.awt.Choice();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setPreferredSize(new java.awt.Dimension(800, 600));
-        jPanel1.setLayout(null);
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setText("Izlazni čvor:");
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(70, 110, 100, 22);
-
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jPanel1.add(jLabel12);
-        jLabel12.setBounds(250, 240, 130, 20);
+        jPanel2.setPreferredSize(new java.awt.Dimension(800, 600));
+        jPanel2.setLayout(null);
 
         choice1.setBackground(new java.awt.Color(0, 153, 153));
-        choice1.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(choice1);
-        choice1.setBounds(180, 110, 240, 30);
+        jPanel2.add(choice1);
+        choice1.setBounds(198, 290, 450, 20);
         String filePath = new File("").getAbsolutePath();
         filePath=filePath+"\\src\\UlazniCvorovi.txt";
         System.out.println(filePath);
@@ -101,8 +68,6 @@ public class Rad extends javax.swing.JFrame  {
                 ulazniCvor.add(pom[0]);
                 choice1.add(pom[0]);
                 line=br.readLine();
-                String data = choice1.getItem(choice1.getSelectedIndex());
-                jLabel12.setText(data);
             }
             br.close();
         }
@@ -114,148 +79,68 @@ public class Rad extends javax.swing.JFrame  {
             Logger.getLogger(Rad.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jPanel1.add(jLabel11);
-        jLabel11.setBounds(140, 144, 90, 20);
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Unesite ulazni cvor na kojem se nalazite:");
+        jPanel2.add(jLabel2);
+        jLabel2.setBounds(200, 254, 440, 30);
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jPanel1.add(jLabel10);
-        jLabel10.setBounds(150, 170, 90, 20);
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("RAD");
+        jPanel2.add(jLabel3);
+        jLabel3.setBounds(370, 70, 80, 30);
 
-        jButton2.setBackground(new java.awt.Color(0, 102, 153));
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton2.setText("Dodaj vozilo");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton2);
-        jButton2.setBounds(500, 310, 190, 50);
-
-        jButton1.setBackground(new java.awt.Color(0, 102, 153));
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton1.setText("Obračun troškova");
+        jButton1.setBackground(new java.awt.Color(0, 102, 102));
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Izdaj potvrdu");
+        jButton1.setToolTipText("");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1);
-        jButton1.setBounds(503, 240, 190, 50);
+        jPanel2.add(jButton1);
+        jButton1.setBounds(330, 363, 200, 40);
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel9.setText("Kategorija vozila:");
-        jPanel1.add(jLabel9);
-        jLabel9.setBounds(70, 400, 140, 20);
-
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel8.setText("Broj naplatne karte:");
-        jPanel1.add(jLabel8);
-        jLabel8.setBounds(70, 360, 170, 22);
-
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel7.setText("Vrijeme ulaska:");
-        jPanel1.add(jLabel7);
-        jLabel7.setBounds(70, 320, 130, 22);
-
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel6.setText("Datum ulaska:");
-        jPanel1.add(jLabel6);
-        jLabel6.setBounds(70, 280, 120, 22);
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel5.setText("Naziv ulaznog čvora:");
-        jPanel1.add(jLabel5);
-        jLabel5.setBounds(70, 240, 170, 22);
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel4.setText("Vrijeme:");
-        jPanel1.add(jLabel4);
-        jLabel4.setBounds(70, 170, 65, 22);
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel3.setText("Datum:");
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(70, 140, 80, 22);
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ssbrs/ulaz/Rad_izlazak.jpg"))); // NOI18N
-        jLabel1.setText("jLabel1");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ssbrs/ulaz/RAD1.jpg"))); // NOI18N
         jLabel1.setMaximumSize(new java.awt.Dimension(800, 600));
         jLabel1.setMinimumSize(new java.awt.Dimension(800, 600));
         jLabel1.setPreferredSize(new java.awt.Dimension(800, 600));
-        jPanel1.add(jLabel1);
+        jPanel2.add(jLabel1);
         jLabel1.setBounds(0, 0, 800, 600);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 801, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+     
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new ObracunTroskova().setVisible(true);
+        new IzdajPotvrdu().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.setVisible(false);
-        new Rad().setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
-    
-    public void ShowTime(){
-        Thread t = new Thread(){
-            public void run(){
-                for(;;){
-                    Calendar calendar = new GregorianCalendar();
-                    int hour = calendar.get(Calendar.HOUR);
-                    int minute = calendar.get(Calendar.MINUTE);
-                    int second = calendar.get(Calendar.SECOND);
-                    jLabel10.setText(hour+":"+minute+":"+second);
-                    /*try{
-                        sleep(1000);
-                    }catch(Exception ex){JOptionPane.showMessageDialog)(null,ex);}*/
-                }
-            }
-        };  
-    t.start();
-    }
-    
-    public void ShowDate(){
-        Thread t = new Thread(){
-            public void run(){
-                for(;;){
-                    Calendar calendar = new GregorianCalendar();
-                    int day = calendar.get(Calendar.DAY_OF_MONTH);
-                    int month = calendar.get(Calendar.MONTH);
-                    int year = calendar.get(Calendar.YEAR);
-                    jLabel11.setText(day+"."+(month+1)+"."+year);
-                    
-        }
-    }
-        };   
-        t.start();
-    }
-    
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        
-        try {
+               
+        /*try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -270,34 +155,23 @@ public class Rad extends javax.swing.JFrame  {
             java.util.logging.Logger.getLogger(Rad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Rad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+        }*/
         //</editor-fold>
-        
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Rad().setVisible(true);
             }
-            
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Choice choice1;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }
