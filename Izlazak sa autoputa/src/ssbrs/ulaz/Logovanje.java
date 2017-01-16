@@ -187,7 +187,7 @@ for(int i=0;i<korisnickoIme.size();i++){
      System.out.println(jTextField1.getText()+" "+sifra.get(i));
 if(jTextField1.getText().equals(korisnickoIme.get(i))){
     if(jPasswordField1.getText().equals(sifra.get(i))){
-        new MeniForm(this).setVisible(true);
+        this.callMain();
 this.setVisible(false);
 this.jTextField1.setText("");
 this.jPasswordField1.setText("");
@@ -197,6 +197,9 @@ this.jPasswordField1.setText("");
 else
         jLabel5.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+    }
+    public void callMain(){
+    new MeniForm(this).setVisible(true);
     }
     /**
      * @param args the command line arguments
