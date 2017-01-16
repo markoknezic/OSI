@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package IzlazakSaAutoputa;
+package ssbrs.izlaz;
 
 /**
  *
- * @author Knezic
+ * @author PC
  */
-public class ObracunTroskova extends javax.swing.JFrame {
+public class Logovanje extends ssbrs.ulaz.Logovanje {
 
     /**
-     * Creates new form ObracunTroskova
+     * Creates new form Logovanje
      */
-    public ObracunTroskova() {
+    public Logovanje() {
         initComponents();
     }
 
@@ -60,20 +60,20 @@ public class ObracunTroskova extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ObracunTroskova.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Logovanje.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ObracunTroskova.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Logovanje.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ObracunTroskova.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Logovanje.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ObracunTroskova.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Logovanje.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ObracunTroskova().setVisible(true);
+                new Logovanje().setVisible(true);
             }
         });
     }

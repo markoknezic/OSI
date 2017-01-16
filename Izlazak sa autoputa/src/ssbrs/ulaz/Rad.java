@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package IzlazakSaAutoputa;
+package ssbrs.ulaz;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -179,7 +179,7 @@ public class Rad extends javax.swing.JFrame  {
         jPanel1.add(jLabel3);
         jLabel3.setBounds(70, 140, 80, 22);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Knezic\\git\\OSI\\Izlazak sa autoputa\\src\\IzlazakSaAutoputa\\Rad_izlazak.jpg")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ssbrs/ulaz/Rad_izlazak.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
         jLabel1.setMaximumSize(new java.awt.Dimension(800, 600));
         jLabel1.setMinimumSize(new java.awt.Dimension(800, 600));

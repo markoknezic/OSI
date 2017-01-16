@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package IzlazakSaAutoputa;
+package ssbrs.ulaz;
 //putanja 1
 import javax.swing.JMenuItem;
 
@@ -50,8 +50,7 @@ public class MeniForm extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 600));
         jPanel1.setLayout(null);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IzlazakSaAutoputa/meni.jpg"))); // NOI18N
-        jLabel1.setPreferredSize(new java.awt.Dimension(800, 600));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ssbrs/ulaz/meni.jpg"))); // NOI18N
         jPanel1.add(jLabel1);
         jLabel1.setBounds(0, 0, 800, 600);
 
