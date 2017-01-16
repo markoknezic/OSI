@@ -19,7 +19,11 @@ public class IzdajPotvrdu extends javax.swing.JFrame {
     public IzdajPotvrdu() {
         initComponents();
     }
-    
+    private Rad r;
+     public IzdajPotvrdu(Rad r) {
+         this.r=r;
+        initComponents();
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -38,6 +42,7 @@ public class IzdajPotvrdu extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -86,7 +91,19 @@ public class IzdajPotvrdu extends javax.swing.JFrame {
         jButton1.setForeground(new java.awt.Color(204, 204, 204));
         jButton1.setText("Štampaj");
         jPanel1.add(jButton1);
-        jButton1.setBounds(320, 450, 160, 60);
+        jButton1.setBounds(240, 450, 160, 60);
+
+        jButton2.setBackground(new java.awt.Color(0, 153, 153));
+        jButton2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(204, 204, 204));
+        jButton2.setText("Odustani");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2);
+        jButton2.setBounds(410, 450, 160, 60);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ssbrs/ulaz/RAD1.jpg"))); // NOI18N
         jPanel1.add(jLabel4);
@@ -109,6 +126,11 @@ public class IzdajPotvrdu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.setVisible(false);
+        r.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -150,6 +172,7 @@ public class IzdajPotvrdu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

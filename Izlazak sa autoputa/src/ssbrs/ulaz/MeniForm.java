@@ -116,7 +116,8 @@ public class MeniForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
    
     public void callRad(){
-     new Rad().setVisible(true);  
+        this.setVisible(false);
+     new Rad(this).setVisible(true);  
     }
     /**
      * @param args the command line arguments
