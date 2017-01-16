@@ -50,8 +50,7 @@ public class MeniForm extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 600));
         jPanel1.setLayout(null);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Knezic\\git\\OSI\\Izlazak sa autoputa\\src\\IzlazakSaAutoputa\\meni.jpg")); // NOI18N
-        jLabel1.setText("jLabel1");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IzlazakSaAutoputa/meni.jpg"))); // NOI18N
         jLabel1.setPreferredSize(new java.awt.Dimension(800, 600));
         jPanel1.add(jLabel1);
         jLabel1.setBounds(0, 0, 800, 600);
