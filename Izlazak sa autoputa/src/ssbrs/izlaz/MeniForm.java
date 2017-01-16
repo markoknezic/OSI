@@ -16,7 +16,7 @@ public class MeniForm extends ssbrs.ulaz.MeniForm {
          this.l=l;
  
     }
-    private ssbrs.ulaz.Logovanje l;
+    private Logovanje l;
     
     
     @Override
