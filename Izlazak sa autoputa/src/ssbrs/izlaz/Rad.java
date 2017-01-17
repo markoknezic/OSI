@@ -5,6 +5,7 @@
  */
 package ssbrs.izlaz;
 
+import ssbrs.zajednickeklase.MeniForm;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
@@ -39,8 +40,37 @@ public class Rad extends javax.swing.JFrame  {
         initComponents();
         ShowTime();
         ShowDate();
+        String filePath = new File("").getAbsolutePath();
+filePath=filePath+"\\UlazniCvorovi.txt";
+System.out.println(filePath);
+ File file=new File(filePath);
+         BufferedReader br;
+          List<String> ulazniCvor = new ArrayList<String>();
+        try{
+            br = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF8"));
+            String line = br.readLine();
+       
+        
+        String[] pom;
+        while (line != null) {
+            pom=line.split(";");
+            ulazniCvor.add(pom[0]);
+            choice1.add(pom[0]);
+            line=br.readLine();
+            String data = choice1.getItem(choice1.getSelectedIndex());
+            jLabel12.setText(data);
+        }
+        br.close();
+}
+        catch (FileNotFoundException ex) {
+            Logger.getLogger(Rad.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(Rad.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Rad.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-    
+    private MeniForm mf;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -85,34 +115,6 @@ public class Rad extends javax.swing.JFrame  {
         choice1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(choice1);
         choice1.setBounds(180, 110, 240, 30);
-        String filePath = new File("").getAbsolutePath();
-        filePath=filePath+"\\src\\UlazniCvorovi.txt";
-        System.out.println(filePath);
-        File file=new File(filePath);
-        BufferedReader br;
-        List<String> ulazniCvor = new ArrayList<String>();
-        try{
-            br = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF8"));
-            String line = br.readLine();
-
-            String[] pom;
-            while (line != null) {
-                pom=line.split(";");
-                ulazniCvor.add(pom[0]);
-                choice1.add(pom[0]);
-                line=br.readLine();
-                String data = choice1.getItem(choice1.getSelectedIndex());
-                jLabel12.setText(data);
-            }
-            br.close();
-        }
-        catch (FileNotFoundException ex) {
-            Logger.getLogger(Rad.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (UnsupportedEncodingException ex) {
-            Logger.getLogger(Rad.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Rad.class.getName()).log(Level.SEVERE, null, ex);
-        }
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jPanel1.add(jLabel11);

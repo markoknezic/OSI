@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ssbrs.ulaz;
+package ssbrs.zajednickeklase;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -21,7 +21,7 @@ import java.util.logging.Logger;
  *
  * @author PC
  */
-public class Logovanje extends javax.swing.JFrame {
+public abstract class Logovanje extends javax.swing.JFrame {
 
     /**
      * Creates new form NewJFrame
@@ -151,7 +151,7 @@ public class Logovanje extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
                  String filePath = new File("").getAbsolutePath();
-filePath=filePath+"\\src\\Korisnici.txt";
+filePath=filePath+"\\Korisnici.txt";
 System.out.println(filePath);
  File file=new File(filePath);
          BufferedReader br;
@@ -187,7 +187,7 @@ for(int i=0;i<korisnickoIme.size();i++){
      System.out.println(jTextField1.getText()+" "+sifra.get(i));
 if(jTextField1.getText().equals(korisnickoIme.get(i))){
     if(jPasswordField1.getText().equals(sifra.get(i))){
-        this.callMain();
+        this.callMeni();
 this.setVisible(false);
 this.jTextField1.setText("");
 this.jPasswordField1.setText("");
@@ -198,44 +198,14 @@ else
         jLabel5.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
     }
-    public void callMain(){
+    public void callMeni(){
+        this.setVisible(false);
     new MeniForm(this).setVisible(true);
-    }
+    };
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Logovanje.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Logovanje.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Logovanje.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Logovanje.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Logovanje().setVisible(true);
-            }
-        });
-    }
  public void setVisibleLabel5(boolean b){
      jLabel5.setVisible(b);
  } 

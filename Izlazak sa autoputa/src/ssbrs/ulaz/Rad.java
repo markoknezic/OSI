@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package ssbrs.ulaz;
+import ssbrs.zajednickeklase.MeniForm;
 import java.awt.Panel;
 import java.io.BufferedReader;
 import java.io.File;
@@ -33,7 +34,7 @@ private MeniForm mf;
         this.mf=mf;
         initComponents();
                           String filePath = new File("").getAbsolutePath();
-filePath=filePath+"\\src\\UlazniCvorovi.txt";
+filePath=filePath+"\\UlazniCvorovi.txt";
 System.out.println(filePath);
  File file=new File(filePath);
          BufferedReader br;

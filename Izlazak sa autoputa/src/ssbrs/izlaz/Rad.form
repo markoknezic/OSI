@@ -84,9 +84,6 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
           </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="String filePath = new File(&quot;&quot;).getAbsolutePath();&#xa;filePath=filePath+&quot;\\src\\UlazniCvorovi.txt&quot;;&#xa;System.out.println(filePath);&#xa; File file=new File(filePath);&#xa;         BufferedReader br;&#xa;          List&lt;String&gt; ulazniCvor = new ArrayList&lt;String&gt;();&#xa;        try{&#xa;            br = new BufferedReader(new InputStreamReader(new FileInputStream(file), &quot;UTF8&quot;));&#xa;            String line = br.readLine();&#xa;       &#xa;        &#xa;        String[] pom;&#xa;        while (line != null) {&#xa;            pom=line.split(&quot;;&quot;);&#xa;            ulazniCvor.add(pom[0]);&#xa;            choice1.add(pom[0]);&#xa;            line=br.readLine();&#xa;            String data = choice1.getItem(choice1.getSelectedIndex());&#xa;            jLabel12.setText(data);&#xa;        }&#xa;        br.close();&#xa;}&#xa;        catch (FileNotFoundException ex) {&#xa;            Logger.getLogger(Rad.class.getName()).log(Level.SEVERE, null, ex);&#xa;        } catch (UnsupportedEncodingException ex) {&#xa;            Logger.getLogger(Rad.class.getName()).log(Level.SEVERE, null, ex);&#xa;        } catch (IOException ex) {&#xa;            Logger.getLogger(Rad.class.getName()).log(Level.SEVERE, null, ex);&#xa;        }"/>
-          </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="180" y="110" width="240" height="30"/>

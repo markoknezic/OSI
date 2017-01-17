@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ssbrs.ulaz;
+package ssbrs.zajednickeklase;
 //putanja 1
+import ssbrs.zajednickeklase.Logovanje;
 import javax.swing.JMenuItem;
+import ssbrs.ulaz.Rad;
 
 /**
  *
@@ -108,57 +110,26 @@ public class MeniForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-             this.callRad();
+            this.setVisible(false);
+        if(l instanceof ssbrs.izlaz.LogovanjeIzlaz)
+     new ssbrs.izlaz.Rad().setVisible(true);
+        else if(l instanceof ssbrs.ulaz.LogovanjeUlaz)
+            new ssbrs.ulaz.Rad(this).setVisible(true);
+        else
+            System.out.println("GRESKA");
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-         this.setVisible(false);
+        this.setVisible(false);
         l.setVisibleLabel5(false);
         l.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
-   
-    public void callRad(){
-        this.setVisible(false);
-     new Rad(this).setVisible(true);  
-    }
+
     /**
      * @param args the command line arguments
      */
     //putanja 1
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        /*if(jMenuItem2.getText().equals() == "{
-            
-        }*/
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MeniForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MeniForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MeniForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MeniForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-       
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MeniForm().setVisible(true);
-            }
-        });
-    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

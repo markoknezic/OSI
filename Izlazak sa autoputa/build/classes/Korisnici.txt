@@ -1,6 +1,0 @@
-Marko;12345
-Slavisa;1234
-Bojana;123
-Una;12
-Vesna;1
-Dragan;0
