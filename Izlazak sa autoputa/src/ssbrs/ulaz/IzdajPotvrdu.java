@@ -23,11 +23,14 @@ public class IzdajPotvrdu extends javax.swing.JFrame {
         initComponents();
     }
     private Rad r;
+    private static int naplatnaKarticaBr;
     private String nazivUlaznogCvora;
      public IzdajPotvrdu(Rad r,String nazivUlaznogCvora) {
+         naplatnaKarticaBr++;
          this.r=r;
          this.nazivUlaznogCvora=nazivUlaznogCvora;
         initComponents();
+        jLabel3.setText("Naplatna kartica broj: "+naplatnaKarticaBr);
         jTextField1.setText("Naziv ulaznog čvora : "+nazivUlaznogCvora);
         jTextField2.setText("Datum : "+ LocalDate.now().format(DateTimeFormatter.ofPattern("dd.MM.yyyy")));
         jTextField3.setText("Vrijeme : "+ LocalTime.now().format(DateTimeFormatter.ofPattern("hh:mm")));
@@ -55,6 +58,11 @@ public class IzdajPotvrdu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                closed(evt);
+            }
+        });
 
         jPanel1.setLayout(null);
 
@@ -72,9 +80,8 @@ public class IzdajPotvrdu extends javax.swing.JFrame {
         jLabel2.setBounds(100, 100, 360, 30);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel3.setText("Naplatna kartica broj :");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(100, 130, 250, 30);
+        jLabel3.setBounds(100, 130, 320, 30);
 
         jTextField1.setEditable(false);
         jTextField1.setBackground(new java.awt.Color(0, 153, 153));
@@ -139,9 +146,14 @@ public class IzdajPotvrdu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        naplatnaKarticaBr--;
         this.setVisible(false);
         r.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void closed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_closed
+     System.out.println("Zatvoren");
+    }//GEN-LAST:event_closed
 
     /**
      * @param args the command line arguments
