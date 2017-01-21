@@ -29,6 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JCheckBox;
 import pomocneklase.FileParser;
 
 /**
@@ -42,6 +43,7 @@ public class Rad extends javax.swing.JFrame {
      */
     public Rad() {
         initComponents();
+        jCheckBox1.setSelected(true);
         String filePath = new File("").getAbsolutePath();
         filePath = filePath + "\\UlazniCvorovi.txt";
         System.out.println(filePath);
@@ -137,6 +139,14 @@ public class Rad extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jCheckBox2 = new javax.swing.JCheckBox();
+        jCheckBox3 = new javax.swing.JCheckBox();
+        jCheckBox4 = new javax.swing.JCheckBox();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -198,7 +208,7 @@ public class Rad extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel9.setText("Kategorija vozila:");
         jPanel1.add(jLabel9);
-        jLabel9.setBounds(70, 400, 140, 20);
+        jLabel9.setBounds(470, 110, 140, 20);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel8.setText("Broj naplatne karte:");
@@ -242,6 +252,60 @@ public class Rad extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jPanel1.add(jLabel14);
         jLabel14.setBounds(210, 320, 130, 20);
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ssbrs/izlaz/slike/ap1.jpg"))); // NOI18N
+        jPanel1.add(jLabel15);
+        jLabel15.setBounds(480, 140, 40, 30);
+
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ssbrs/izlaz/slike/ap2.jpg"))); // NOI18N
+        jPanel1.add(jLabel16);
+        jLabel16.setBounds(540, 140, 40, 40);
+
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ssbrs/izlaz/slike/ap3.jpg"))); // NOI18N
+        jPanel1.add(jLabel18);
+        jLabel18.setBounds(600, 140, 50, 50);
+
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ssbrs/izlaz/slike/ap4.jpg"))); // NOI18N
+        jPanel1.add(jLabel19);
+        jLabel19.setBounds(670, 140, 50, 50);
+
+        jCheckBox1.setBackground(new java.awt.Color(0, 204, 255));
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jCheckBox1);
+        jCheckBox1.setBounds(490, 200, 20, 21);
+
+        jCheckBox2.setBackground(new java.awt.Color(0, 204, 255));
+        jCheckBox2.setText("jCheckBox2");
+        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jCheckBox2);
+        jCheckBox2.setBounds(550, 200, 20, 20);
+
+        jCheckBox3.setBackground(new java.awt.Color(0, 204, 255));
+        jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox3ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jCheckBox3);
+        jCheckBox3.setBounds(620, 200, 20, 21);
+
+        jCheckBox4.setBackground(new java.awt.Color(0, 204, 255));
+        jCheckBox4.setToolTipText("");
+        jCheckBox4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox4ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jCheckBox4);
+        jCheckBox4.setBounds(680, 200, 20, 21);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ssbrs/izlaz/slike/Rad_izlazak.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -309,6 +373,33 @@ public class Rad extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_itemStateChanged
 
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+      deselect(jCheckBox2);
+        deselect(jCheckBox3);
+        deselect(jCheckBox4);
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
+        deselect(jCheckBox1);
+        deselect(jCheckBox3);
+        deselect(jCheckBox4);
+        
+    }//GEN-LAST:event_jCheckBox2ActionPerformed
+
+    private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
+         deselect(jCheckBox1);
+        deselect(jCheckBox2);
+        deselect(jCheckBox4);
+    }//GEN-LAST:event_jCheckBox3ActionPerformed
+
+    private void jCheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox4ActionPerformed
+         deselect(jCheckBox1);
+        deselect(jCheckBox3);
+        deselect(jCheckBox2);
+    }//GEN-LAST:event_jCheckBox4ActionPerformed
+private void deselect(JCheckBox jCB){
+    if(jCB.isSelected()) jCB.setSelected(false);
+}
     public void ShowTime() {
         Thread t = new Thread() {
             public void run() {
@@ -382,12 +473,20 @@ public class Rad extends javax.swing.JFrame {
     private java.awt.Choice choice2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JCheckBox jCheckBox3;
+    private javax.swing.JCheckBox jCheckBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
