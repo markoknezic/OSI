@@ -5,7 +5,7 @@
  */
 package ssbrs.izlaz;
 
-import ssbrs.zajednickeklase.MeniForm;
+import ssbrs.zajednickeklase.forme.MeniForm;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;

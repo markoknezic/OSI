@@ -11,7 +11,7 @@ package ssbrs.izlaz;
  *
  * @author PC
  */
-public class LogovanjeIzlaz extends ssbrs.zajednickeklase.Logovanje{
+public class LogovanjeIzlaz extends ssbrs.zajednickeklase.forme.Logovanje{
   
     
 
@@ -29,13 +29,13 @@ public class LogovanjeIzlaz extends ssbrs.zajednickeklase.Logovanje{
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ssbrs.zajednickeklase.Logovanje.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ssbrs.zajednickeklase.forme.Logovanje.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ssbrs.zajednickeklase.Logovanje.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ssbrs.zajednickeklase.forme.Logovanje.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ssbrs.zajednickeklase.Logovanje.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ssbrs.zajednickeklase.forme.Logovanje.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ssbrs.zajednickeklase.Logovanje.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ssbrs.zajednickeklase.forme.Logovanje.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>

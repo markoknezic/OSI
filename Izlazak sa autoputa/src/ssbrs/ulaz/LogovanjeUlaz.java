@@ -5,14 +5,14 @@
  */
 package ssbrs.ulaz;
 
-import ssbrs.zajednickeklase.MeniForm;
-import ssbrs.zajednickeklase.Logovanje;
+import ssbrs.zajednickeklase.forme.MeniForm;
+import ssbrs.zajednickeklase.forme.Logovanje;
 
 /**
  *
  * @author PC
  */
-public class LogovanjeUlaz extends ssbrs.zajednickeklase.Logovanje{
+public class LogovanjeUlaz extends ssbrs.zajednickeklase.forme.Logovanje{
     
 
         public static void main(String args[]) {
