@@ -23,54 +23,93 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import pomocneklase.FileParser;
+
 /**
  *
  * @author Knezic
  */
-public class Rad extends javax.swing.JFrame  {
+public class Rad extends javax.swing.JFrame {
 
     /**
      * Creates new form Rad
      */
     public Rad() {
         initComponents();
+        String filePath = new File("").getAbsolutePath();
+        filePath = filePath + "\\UlazniCvorovi.txt";
+        System.out.println(filePath);
+        File file = new File(filePath);
+        ulazniCvorovi = FileParser.ucitajPodatke(file);
+        for (int i = 0; i < ulazniCvorovi.size(); i++) {
+            choice1.add(ulazniCvorovi.get(i));
+        }
+//
+        ld = LocalDate.now();
+        String danasnjiDatum = new File("").getAbsolutePath();
+        danasnjiDatum = danasnjiDatum + "\\IzdatePotvrde" + ld.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")) + ".txt";
+        System.out.println(filePath);
+        File file1 = new File(danasnjiDatum);
+        String nazivUlCvora = null;
+        String datumUL = null;
+        String vrijemeUl = null;
+        izdatePotvrdeDanas = FileParser.ucitajPodatke(file1);
+        for (int i = 0; i < izdatePotvrdeDanas.size(); i++) {
+            System.out.println(izdatePotvrdeDanas.get(i));
+            String pom[] = izdatePotvrdeDanas.get(i).split(";");
+            choice2.add(pom[0]);
+            brojUlCvora.add(pom[0]);
+            this.nazivUlCvora.add(pom[1]);
+            datumULCvora.add(pom[2]);
+            vrijemeULCvora.add(pom[3]);
+            if (i == 0) {
+                nazivUlCvora = pom[1];
+                datumUL = datumULCvora.get(0);
+                vrijemeUl = pom[3];
+            }
+        }
+        //
+        ld = ld.minusDays(1);
+        System.out.println(ld);
+        String jucerasnjiDatum = new File("").getAbsolutePath();
+        jucerasnjiDatum = jucerasnjiDatum + "\\IzdatePotvrde" + ld.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")) + ".txt";
+        System.out.println(jucerasnjiDatum);
+        File file2 = new File(jucerasnjiDatum);
+        if (file2.exists() && !file2.isDirectory()) {
+            izdatePotvrdeJuce = FileParser.ucitajPodatke(file2);
+            for (int i = 0; i < izdatePotvrdeJuce.size(); i++) {
+                System.out.println(izdatePotvrdeJuce.get(i));
+                String pom[] = izdatePotvrdeJuce.get(i).split(";");
+                choice2.add(pom[0]);
+                brojUlCvora.add(pom[0]);
+                this.nazivUlCvora.add(pom[1]);
+                datumULCvora.add(pom[2]);
+                vrijemeULCvora.add(pom[3]);
+            }
+        }
+        //
+        jLabel12.setText(nazivUlCvora);
+        jLabel13.setText(datumUL);
+        jLabel14.setText(vrijemeUl);
         ShowTime();
         ShowDate();
-        String filePath = new File("").getAbsolutePath();
-filePath=filePath+"\\UlazniCvorovi.txt";
-System.out.println(filePath);
- File file=new File(filePath);
-         BufferedReader br;
-          List<String> ulazniCvor = new ArrayList<String>();
-        try{
-            br = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF8"));
-            String line = br.readLine();
-       
-        
-        String[] pom;
-        while (line != null) {
-            pom=line.split(";");
-            ulazniCvor.add(pom[0]);
-            choice1.add(pom[0]);
-            line=br.readLine();
-            String data = choice1.getItem(choice1.getSelectedIndex());
-            jLabel12.setText(data);
-        }
-        br.close();
-}
-        catch (FileNotFoundException ex) {
-            Logger.getLogger(Rad.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (UnsupportedEncodingException ex) {
-            Logger.getLogger(Rad.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Rad.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
+    private List<String> ulazniCvorovi;
+    private List<String> izdatePotvrdeDanas;
+    private List<String> izdatePotvrdeJuce;
+    private List<String> brojUlCvora = new ArrayList();
+    private List<String> nazivUlCvora = new ArrayList();
+    private List<String> datumULCvora = new ArrayList();
+    private List<String> vrijemeULCvora = new ArrayList();
     private MeniForm mf;
+    private LocalDate ld;
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -82,8 +121,8 @@ System.out.println(filePath);
 
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
         choice1 = new java.awt.Choice();
+        choice2 = new java.awt.Choice();
         jLabel11 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
@@ -95,6 +134,9 @@ System.out.println(filePath);
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -108,14 +150,20 @@ System.out.println(filePath);
         jPanel1.add(jLabel2);
         jLabel2.setBounds(70, 110, 100, 22);
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jPanel1.add(jLabel12);
-        jLabel12.setBounds(250, 240, 130, 20);
-
         choice1.setBackground(new java.awt.Color(0, 153, 153));
         choice1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(choice1);
         choice1.setBounds(180, 110, 240, 30);
+
+        choice2.setBackground(new java.awt.Color(0, 153, 153));
+        choice2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        choice2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                Rad.this.itemStateChanged(evt);
+            }
+        });
+        jPanel1.add(choice2);
+        choice2.setBounds(240, 360, 160, 20);
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jPanel1.add(jLabel11);
@@ -182,6 +230,19 @@ System.out.println(filePath);
         jPanel1.add(jLabel3);
         jLabel3.setBounds(70, 140, 80, 22);
 
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jPanel1.add(jLabel12);
+        jLabel12.setBounds(240, 240, 130, 20);
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel13.setToolTipText("");
+        jPanel1.add(jLabel13);
+        jLabel13.setBounds(200, 280, 160, 20);
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jPanel1.add(jLabel14);
+        jLabel14.setBounds(210, 320, 130, 20);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ssbrs/izlaz/slike/Rad_izlazak.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
         jLabel1.setMaximumSize(new java.awt.Dimension(800, 600));
@@ -216,48 +277,79 @@ System.out.println(filePath);
         this.setVisible(false);
         new Rad().setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
-    
-    public void ShowTime(){
-        Thread t = new Thread(){
-            public void run(){
-                for(;;){
+
+    private void itemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_itemStateChanged
+        System.out.println(evt.getItem());
+        for (int i = 0; i < izdatePotvrdeDanas.size(); i++) {
+            System.out.println("BROJ UL C " + brojUlCvora.get(i) + "evt " + evt.getItem().toString());
+            if (evt.getItem().toString().equals(brojUlCvora.get(i))) {
+                jLabel12.setText(nazivUlCvora.get(i));
+                System.out.println("TESTNITEST");
+                jLabel13.setText(datumULCvora.get(i));
+                jLabel14.setText(vrijemeULCvora.get(i));
+            }
+        }
+        LocalDate ldLocal = LocalDate.now();
+        LocalDate ldJuce = ldLocal.minusDays(1);
+        System.out.println(ld);
+        String jucerasnjiDatum = new File("").getAbsolutePath();
+        jucerasnjiDatum = jucerasnjiDatum + "\\IzdatePotvrde" + ldJuce.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")) + ".txt";
+        System.out.println(jucerasnjiDatum);
+        File file2 = new File(jucerasnjiDatum);
+        if (file2.exists() && !file2.isDirectory()) {
+            for (int i = 0; i < izdatePotvrdeJuce.size(); i++) {
+                System.out.println("BROJ UL C " + brojUlCvora.get(i) + "evt " + evt.getItem().toString());
+                if (evt.getItem().toString().equals(brojUlCvora.get(i))) {
+                    jLabel12.setText(nazivUlCvora.get(izdatePotvrdeDanas.size() + i));
+                    System.out.println("TESTNITEST123");
+                    jLabel13.setText(datumULCvora.get(izdatePotvrdeDanas.size() + i));
+                    jLabel14.setText(vrijemeULCvora.get(izdatePotvrdeDanas.size() + i));
+                }
+            }
+        }
+    }//GEN-LAST:event_itemStateChanged
+
+    public void ShowTime() {
+        Thread t = new Thread() {
+            public void run() {
+                for (;;) {
                     Calendar calendar = new GregorianCalendar();
                     int hour = calendar.get(Calendar.HOUR);
                     int minute = calendar.get(Calendar.MINUTE);
                     int second = calendar.get(Calendar.SECOND);
-                    jLabel10.setText(hour+":"+minute+":"+second);
+                    jLabel10.setText(hour + ":" + minute + ":" + second);
                     /*try{
                         sleep(1000);
                     }catch(Exception ex){JOptionPane.showMessageDialog)(null,ex);}*/
                 }
             }
-        };  
-    t.start();
+        };
+        t.start();
     }
-    
-    public void ShowDate(){
-        Thread t = new Thread(){
-            public void run(){
-                for(;;){
+
+    public void ShowDate() {
+        Thread t = new Thread() {
+            public void run() {
+                for (;;) {
                     Calendar calendar = new GregorianCalendar();
                     int day = calendar.get(Calendar.DAY_OF_MONTH);
                     int month = calendar.get(Calendar.MONTH);
                     int year = calendar.get(Calendar.YEAR);
-                    jLabel11.setText(day+"."+(month+1)+"."+year);
-                    
-        }
-    }
-        };   
+                    jLabel11.setText(day + "." + (month + 1) + "." + year);
+
+                }
+            }
+        };
         t.start();
     }
-    
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -275,24 +367,27 @@ System.out.println(filePath);
             java.util.logging.Logger.getLogger(Rad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Rad().setVisible(true);
             }
-            
+
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Choice choice1;
+    private java.awt.Choice choice2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

@@ -46,7 +46,7 @@ public class IzdajPotvrdu extends javax.swing.JFrame {
         lt = LocalTime.now();
         jTextField1.setText("Naziv ulaznog čvora : " + nazivUlaznogCvora);
         jTextField2.setText("Datum : " + ld.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")));
-        jTextField3.setText("Vrijeme : " + lt.format(DateTimeFormatter.ofPattern("hh:mm")));
+        jTextField3.setText("Vrijeme : " + lt.format(DateTimeFormatter.ofPattern("hh:mm a")));
         String filePath = new File("").getAbsolutePath();
         filePath = filePath + "\\IzdatePotvrde" + ld.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")) + ".txt";
         System.out.println(filePath);
@@ -195,7 +195,7 @@ public class IzdajPotvrdu extends javax.swing.JFrame {
     }//GEN-LAST:event_closed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String s = "" + naplatnaKarticaBr + ";" + nazivUlaznogCvora + ";" + ld.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")) + ";" + lt.format(DateTimeFormatter.ofPattern("hh:mm"));
+        String s = "" + naplatnaKarticaBr + ";" + nazivUlaznogCvora + ";" + ld.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")) + ";" + lt.format(DateTimeFormatter.ofPattern("hh:mm a"));
         test.add(s);
         String t = "";
         for (int i = 0; i < test.size(); i++) {
