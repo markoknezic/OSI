@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ssbrs.izlaz;
+package ssbrs.izlaz.forme;
 
 import ssbrs.zajednickeklase.forme.MeniForm;
 import javafx.application.Application;
@@ -98,6 +98,7 @@ System.out.println(filePath);
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 600));
         jPanel1.setLayout(null);
@@ -181,7 +182,7 @@ System.out.println(filePath);
         jPanel1.add(jLabel3);
         jLabel3.setBounds(70, 140, 80, 22);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ssbrs/ulaz/RAD1.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ssbrs/izlaz/slike/Rad_izlazak.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
         jLabel1.setMaximumSize(new java.awt.Dimension(800, 600));
         jLabel1.setMinimumSize(new java.awt.Dimension(800, 600));

@@ -5,6 +5,7 @@
  */
 package ssbrs.zajednickeklase.forme;
 //putanja 1
+
 import ssbrs.zajednickeklase.forme.Logovanje;
 import javax.swing.JMenuItem;
 import ssbrs.ulaz.forme.Rad;
@@ -14,7 +15,7 @@ import ssbrs.ulaz.forme.Rad;
  * @author PC
  */
 public class MeniForm extends javax.swing.JFrame {
-    
+
     /**
      * Creates new form MeniForm
      */
@@ -23,10 +24,11 @@ public class MeniForm extends javax.swing.JFrame {
     }
 
     public MeniForm(Logovanje l) {
-    this.l=l;
-    initComponents();
+        this.l = l;
+        initComponents();
     }
     private Logovanje l;
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -46,6 +48,7 @@ public class MeniForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ulazak na Auotoput");
+        setResizable(false);
 
         jPanel1.setMaximumSize(new java.awt.Dimension(800, 600));
         jPanel1.setMinimumSize(new java.awt.Dimension(800, 600));
@@ -106,17 +109,18 @@ public class MeniForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
+        new Pomoc(this).setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-            this.setVisible(false);
-        if(l instanceof ssbrs.izlaz.LogovanjeIzlaz)
-     new ssbrs.izlaz.Rad().setVisible(true);
-        else if(l instanceof ssbrs.ulaz.LogovanjeUlaz)
+        this.setVisible(false);
+        if (l instanceof ssbrs.izlaz.LogovanjeIzlaz) {
+            new ssbrs.izlaz.forme.Rad().setVisible(true);
+        } else if (l instanceof ssbrs.ulaz.LogovanjeUlaz) {
             new ssbrs.ulaz.forme.Rad(this).setVisible(true);
-        else
+        } else {
             System.out.println("GRESKA");
+        }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
@@ -129,7 +133,6 @@ public class MeniForm extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     //putanja 1
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

@@ -52,6 +52,7 @@ public abstract class Logovanje extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Prijava na sistem");
+        setResizable(false);
 
         jPanel1.setLayout(null);
 

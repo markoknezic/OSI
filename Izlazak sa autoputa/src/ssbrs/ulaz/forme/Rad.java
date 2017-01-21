@@ -79,6 +79,7 @@ System.out.println(filePath);
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel2.setPreferredSize(new java.awt.Dimension(800, 600));
         jPanel2.setLayout(null);
