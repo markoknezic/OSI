@@ -5,11 +5,17 @@
  */
 package ssbrs.ulaz;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import ssbrs.zajednickeklase.FileParser;
+
 /**
  *
  * @author Knezic
@@ -25,17 +31,36 @@ public class IzdajPotvrdu extends javax.swing.JFrame {
     private Rad r;
     private static int naplatnaKarticaBr;
     private String nazivUlaznogCvora;
-     public IzdajPotvrdu(Rad r,String nazivUlaznogCvora) {
-         naplatnaKarticaBr++;
-         this.r=r;
-         this.nazivUlaznogCvora=nazivUlaznogCvora;
+    private LocalDate ld;
+    private LocalTime lt;
+    List<String> test = new ArrayList<String>();
+
+    public IzdajPotvrdu(Rad r, String nazivUlaznogCvora) {
+        naplatnaKarticaBr++;
+        this.r = r;
+        this.nazivUlaznogCvora = nazivUlaznogCvora;
         initComponents();
-        jLabel3.setText("Naplatna kartica broj: "+naplatnaKarticaBr);
-        jTextField1.setText("Naziv ulaznog čvora : "+nazivUlaznogCvora);
-        jTextField2.setText("Datum : "+ LocalDate.now().format(DateTimeFormatter.ofPattern("dd.MM.yyyy")));
-        jTextField3.setText("Vrijeme : "+ LocalTime.now().format(DateTimeFormatter.ofPattern("hh:mm")));
+        jLabel5.setVisible(false);
+        ld = LocalDate.now();
+        lt = LocalTime.now();
+        jTextField1.setText("Naziv ulaznog čvora : " + nazivUlaznogCvora);
+        jTextField2.setText("Datum : " + ld.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")));
+        jTextField3.setText("Vrijeme : " + lt.format(DateTimeFormatter.ofPattern("hh:mm")));
+        String filePath = new File("").getAbsolutePath();
+        filePath = filePath + "\\IzdatePotvrde" + ld.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")) + ".txt";
+        System.out.println(filePath);
+        File file = new File(filePath);
+        if (file.exists() && !file.isDirectory()) {
+            System.out.println("POSTOJI");
+            test = FileParser.ucitajPodatke(file);
+            naplatnaKarticaBr = test.size() + 1;
+        } else {
+            System.out.println("NE POSTOJI");
+            naplatnaKarticaBr = 1;
+        }
+        jLabel3.setText("Naplatna kartica broj: " + naplatnaKarticaBr);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -54,6 +79,7 @@ public class IzdajPotvrdu extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -108,6 +134,11 @@ public class IzdajPotvrdu extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jButton1.setForeground(new java.awt.Color(204, 204, 204));
         jButton1.setText("Štampaj");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1);
         jButton1.setBounds(240, 450, 160, 60);
 
@@ -122,6 +153,13 @@ public class IzdajPotvrdu extends javax.swing.JFrame {
         });
         jPanel1.add(jButton2);
         jButton2.setBounds(410, 450, 160, 60);
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Potvrda je uspješno oštampana");
+        jLabel5.setToolTipText("");
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(100, 340, 360, 30);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ssbrs/ulaz/RAD1.jpg"))); // NOI18N
         jPanel1.add(jLabel4);
@@ -152,8 +190,30 @@ public class IzdajPotvrdu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void closed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_closed
-     System.out.println("Zatvoren");
+        System.out.println("Zatvoren");
     }//GEN-LAST:event_closed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String s = "" + naplatnaKarticaBr + ";" + nazivUlaznogCvora + ";" + ld.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")) + ";" + lt.format(DateTimeFormatter.ofPattern("hh:mm"));
+        test.add(s);
+        String t = "";
+        for (int i = 0; i < test.size(); i++) {
+            t += (test.get(i).toString() + "\n");
+            System.out.println(t);
+        }
+        String filePath = new File("").getAbsolutePath();
+        filePath = filePath + "\\IzdatePotvrde" + ld.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")) + ".txt";
+        System.out.println(filePath);
+        File file = new File(filePath);
+        try {
+            FileParser.upisiUFile(file, t);
+        } catch (IOException ex) {
+            Logger.getLogger(IzdajPotvrdu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        jLabel5.setVisible(true);
+        jButton1.setVisible(false);
+        jButton2.setText("OK");
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -170,7 +230,7 @@ public class IzdajPotvrdu extends javax.swing.JFrame {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
-        /*    System.out.print(gcalendar.get(Calendar.HOUR) + ":");
+                /*    System.out.print(gcalendar.get(Calendar.HOUR) + ":");
             System.out.print(gcalendar.get(Calendar.MINUTE) + ":");
             System.out.println(gcalendar.get(Calendar.SECOND));*/
             }
@@ -184,7 +244,7 @@ public class IzdajPotvrdu extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(IzdajPotvrdu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -200,6 +260,7 @@ public class IzdajPotvrdu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
