@@ -101,8 +101,10 @@ public class Rad extends javax.swing.JFrame {
         jLabel14.setText(vrijemeUl);
         ShowTime();
         ShowDate();
+        this.initCijena();
     }
     private List<String> ulazniCvorovi;
+     private List<String> cjenovnik;
     private List<String> izdatePotvrdeDanas;
     private List<String> izdatePotvrdeJuce;
     private List<String> brojUlCvora = new ArrayList();
@@ -111,6 +113,16 @@ public class Rad extends javax.swing.JFrame {
     private List<String> vrijemeULCvora = new ArrayList();
     private MeniForm mf;
     private LocalDate ld;
+    private String matrica[][]={{"0","1.00","1.20","1.30","1.40","1.50","1.60","1.70","1.80","1.90"},
+                            {"1.00","0","1.00","1.20","1.30","1.40","1.50","1.60","1.70","1.80"},
+                            {"1.20","1.00","0","1.00","1.20","1.30","1.40","1.50","1.60","1.70"},
+                            {"1.30","1.20","1.00","0","1.00","1.20","1.30","1.40","1.50","1.60"},
+                            {"1.40","1.30","1.20","1.00","0","1.00","1.20","1.30","1.40","1.50"},
+                            {"1.50","1.40","1.30","1.20","1.00","0","1.00","1.20","1.30","1.40"},
+                            {"1.60","1.50","1.40","1.30","1.20","1.00","0","1.00","1.20","1.30"},
+                            {"1.70","1.60","1.50","1.40","1.30","1.20","1.00","0","1.00","1.20"},
+                            {"1.80","1.70","1.60","1.50","1.40","1.30","1.20","1.00","0","1.00"},
+                            {"1.90","1.80","1.70","1.60","1.50","1.40","1.30","1.20","1.00","0"}};
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -147,6 +159,7 @@ public class Rad extends javax.swing.JFrame {
         jCheckBox2 = new javax.swing.JCheckBox();
         jCheckBox3 = new javax.swing.JCheckBox();
         jCheckBox4 = new javax.swing.JCheckBox();
+        jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -162,6 +175,11 @@ public class Rad extends javax.swing.JFrame {
 
         choice1.setBackground(new java.awt.Color(0, 153, 153));
         choice1.setForeground(new java.awt.Color(255, 255, 255));
+        choice1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                itemStateChangedChoice1(evt);
+            }
+        });
         jPanel1.add(choice1);
         choice1.setBounds(180, 110, 240, 30);
 
@@ -307,6 +325,13 @@ public class Rad extends javax.swing.JFrame {
         jPanel1.add(jCheckBox4);
         jCheckBox4.setBounds(680, 200, 20, 21);
 
+        jTextField1.setEditable(false);
+        jTextField1.setBackground(new java.awt.Color(0, 153, 153));
+        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(204, 204, 204));
+        jPanel1.add(jTextField1);
+        jTextField1.setBounds(510, 380, 180, 35);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ssbrs/izlaz/slike/Rad_izlazak.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
         jLabel1.setMaximumSize(new java.awt.Dimension(800, 600));
@@ -352,6 +377,7 @@ public class Rad extends javax.swing.JFrame {
                 jLabel13.setText(datumULCvora.get(i));
                 jLabel14.setText(vrijemeULCvora.get(i));
             }
+            this.initCijena();
         }
         LocalDate ldLocal = LocalDate.now();
         LocalDate ldJuce = ldLocal.minusDays(1);
@@ -373,16 +399,51 @@ public class Rad extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_itemStateChanged
 
+    private void initCijena(){
+   /* String filePath = new File("").getAbsolutePath();
+        filePath = filePath + "\\Cijenovnik.txt";
+        System.out.println(filePath);
+        File file = new File(filePath);
+        cjenovnik = FileParser.ucitajPodatke(file);
+        //String ulazniCvorovi[]=cjenovnik.get(0).split(";");*/
+        int x=0,y=0;
+        for(int i=0;i<matrica.length;i++){
+            if(choice1.getSelectedItem().equals(ulazniCvorovi.get(i)))
+            { x=i;System.out.println("X "+x);}
+            if( jLabel12.getText().equals(ulazniCvorovi.get(i)))
+            { y=i;System.out.println("Y "+y);}
+        }
+       
+        
+System.out.println("X "+x+" "+y);
+           for(int z=0;z<10;z++) System.out.println(matrica[x][z]);
+       jTextField1.setText(""+matrica[x][y]);
+           if(jCheckBox1.isSelected())     
+         jTextField1.setText(""+matrica[x][y]);
+      else if(jCheckBox2.isSelected()){
+          Double d=round(2*Double.parseDouble(jTextField1.getText()),2);
+        jTextField1.setText(d.toString());}
+      else if(jCheckBox3.isSelected()){
+          Double d=round(3*Double.parseDouble(jTextField1.getText()),2);
+        jTextField1.setText(d.toString());}
+      else if(jCheckBox4.isSelected()){
+          Double d=round(4*Double.parseDouble(jTextField1.getText()),2);
+        jTextField1.setText(d.toString());}
+    }
+    
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
       deselect(jCheckBox2);
         deselect(jCheckBox3);
         deselect(jCheckBox4);
+        this.initCijena();
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
         deselect(jCheckBox1);
         deselect(jCheckBox3);
         deselect(jCheckBox4);
+        this.initCijena();
+        
         
     }//GEN-LAST:event_jCheckBox2ActionPerformed
 
@@ -390,13 +451,19 @@ public class Rad extends javax.swing.JFrame {
          deselect(jCheckBox1);
         deselect(jCheckBox2);
         deselect(jCheckBox4);
+         this.initCijena();
     }//GEN-LAST:event_jCheckBox3ActionPerformed
 
     private void jCheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox4ActionPerformed
          deselect(jCheckBox1);
         deselect(jCheckBox3);
         deselect(jCheckBox2);
+         this.initCijena();
     }//GEN-LAST:event_jCheckBox4ActionPerformed
+
+    private void itemStateChangedChoice1(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_itemStateChangedChoice1
+      this.initCijena();
+    }//GEN-LAST:event_itemStateChangedChoice1
 private void deselect(JCheckBox jCB){
     if(jCB.isSelected()) jCB.setSelected(false);
 }
@@ -496,5 +563,14 @@ private void deselect(JCheckBox jCB){
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+public static double round(double value, int places) {
+    if (places < 0) throw new IllegalArgumentException();
+
+    long factor = (long) Math.pow(10, places);
+    value = value * factor;
+    long tmp = Math.round(value);
+    return (double) tmp / factor;
+}
 }
