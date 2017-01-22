@@ -31,6 +31,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JCheckBox;
 import pomocneklase.FileParser;
+import ssbrs.ulaz.forme.IzdajPotvrdu;
 
 /**
  *
@@ -41,7 +42,8 @@ public class Rad extends javax.swing.JFrame {
     /**
      * Creates new form Rad
      */
-    public Rad() {
+    public Rad(MeniForm mf) {
+        this.mf=mf;
         initComponents();
         jCheckBox1.setSelected(true);
         String filePath = new File("").getAbsolutePath();
@@ -203,7 +205,7 @@ public class Rad extends javax.swing.JFrame {
 
         jButton2.setBackground(new java.awt.Color(0, 102, 153));
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton2.setText("Dodaj vozilo");
+        jButton2.setText("Nazad");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -359,19 +361,20 @@ public class Rad extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new ObracunTroskova().setVisible(true);
+this.obrisiPotvrdu();
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.setVisible(false);
-        new Rad().setVisible(true);
+        mf.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void itemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_itemStateChanged
-        System.out.println(evt.getItem());
+       
         for (int i = 0; i < izdatePotvrdeDanas.size(); i++) {
-            System.out.println("BROJ UL C " + brojUlCvora.get(i) + "evt " + evt.getItem().toString());
-            if (evt.getItem().toString().equals(brojUlCvora.get(i))) {
+     
+          if (evt.getItem().toString().equals(brojUlCvora.get(i))) {
                 jLabel12.setText(nazivUlCvora.get(i));
                 System.out.println("TESTNITEST");
                 jLabel13.setText(datumULCvora.get(i));
@@ -529,7 +532,7 @@ private void deselect(JCheckBox jCB){
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Rad().setVisible(true);
+                new Rad(new MeniForm()).setVisible(true);
             }
 
         });
@@ -565,12 +568,36 @@ private void deselect(JCheckBox jCB){
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
-public static double round(double value, int places) {
+private static double round(double value, int places) {
     if (places < 0) throw new IllegalArgumentException();
 
     long factor = (long) Math.pow(10, places);
     value = value * factor;
     long tmp = Math.round(value);
     return (double) tmp / factor;
+}
+private void  obrisiPotvrdu(){
+    LocalDate ld=LocalDate.now();
+    String s="";
+for(int i=0;i<izdatePotvrdeDanas.size();i++){
+String pom[]=izdatePotvrdeDanas.get(i).split(";");
+if(pom[0].equals(choice2.getSelectedItem()) && pom[1].equals(jLabel12.getText()) && pom[2].equals(jLabel13.getText()) && pom[3].equals(jLabel14.getText()))
+{izdatePotvrdeDanas.remove(i);
+choice2.remove(choice2.getSelectedItem());
+this.setVisible(false);
+}
+    s+=izdatePotvrdeDanas.get(i).toString()+"\n";
+}
+String filePath = new File("").getAbsolutePath();
+        filePath = filePath + "\\IzdatePotvrde" + ld.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")) + ".txt";
+        System.out.println(filePath);
+        File file = new File(filePath);
+        try {
+            FileParser.upisiUFile(file, s);
+        } catch (IOException ex) {
+            Logger.getLogger(IzdajPotvrdu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+new Rad(mf).setVisible(true);
 }
 }

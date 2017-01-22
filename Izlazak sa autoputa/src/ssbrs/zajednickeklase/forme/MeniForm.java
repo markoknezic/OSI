@@ -115,7 +115,7 @@ public class MeniForm extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         this.setVisible(false);
         if (l instanceof ssbrs.izlaz.LogovanjeIzlaz) {
-            new ssbrs.izlaz.forme.Rad().setVisible(true);
+            new ssbrs.izlaz.forme.Rad(this).setVisible(true);
         } else if (l instanceof ssbrs.ulaz.LogovanjeUlaz) {
             new ssbrs.ulaz.forme.Rad(this).setVisible(true);
         } else {
