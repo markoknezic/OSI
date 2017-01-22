@@ -56,6 +56,16 @@ public class Rad extends javax.swing.JFrame {
         }
 //
         ld = LocalDate.now();
+        //
+         String izdateKarte = new File("").getAbsolutePath();
+        izdateKarte = izdateKarte + "\\IzdateKarte" + ld.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")) + ".txt";
+        System.out.println(filePath);
+        File file3 = new File(izdateKarte);
+        if (file3.exists() && !file3.isDirectory()) {
+        this.izdateKarte=FileParser.ucitajPodatke(file3);
+            
+        }
+        //
         String danasnjiDatum = new File("").getAbsolutePath();
         danasnjiDatum = danasnjiDatum + "\\IzdatePotvrde" + ld.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")) + ".txt";
         System.out.println(filePath);
@@ -108,6 +118,7 @@ public class Rad extends javax.swing.JFrame {
     private List<String> ulazniCvorovi;
      private List<String> cjenovnik;
     private List<String> izdatePotvrdeDanas;
+    private List<String> izdateKarte;
     private List<String> izdatePotvrdeJuce;
     private List<String> brojUlCvora = new ArrayList();
     private List<String> nazivUlCvora = new ArrayList();
@@ -597,7 +608,23 @@ String filePath = new File("").getAbsolutePath();
         } catch (IOException ex) {
             Logger.getLogger(IzdajPotvrdu.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        String t=""+jLabel2.getText()+choice1.getSelectedItem()+";"+jLabel3.getText()+jLabel11.getText()+";"+jLabel4.getText()+""+jLabel10.getText()+"\n";
+String izdateKarte = new File("").getAbsolutePath();
+        izdateKarte = izdateKarte + "\\IzdateKarte" + ld.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")) + ".txt";
+        if(this.izdateKarte!=null)
+        this.izdateKarte.add(t);
+        else {this.izdateKarte=new ArrayList();this.izdateKarte.add(t);}
+        String t1="";
+        for(int i=0;i<this.izdateKarte.size();i++){
+        t1+=this.izdateKarte.get(i)+"\n";
+        }
+        File fileKarte = new File(izdateKarte);
+        try {
+            FileParser.upisiUFile(fileKarte, t1);
+        } catch (IOException ex) {
+            Logger.getLogger(IzdajPotvrdu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
 new Rad(mf).setVisible(true);
 }
 }
