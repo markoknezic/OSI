@@ -26,6 +26,8 @@ public class MeniForm extends javax.swing.JFrame {
     public MeniForm(Logovanje l) {
         this.l = l;
         initComponents();
+        if (l instanceof ssbrs.izlaz.LogovanjeIzlaz) {
+        this.setTitle("Izlazak sa Autoputa");}
     }
     private Logovanje l;
 
